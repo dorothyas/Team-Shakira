@@ -29,13 +29,17 @@ class DB:
             self.conn.commit()
             if operation == 'SELECT':
                 return self.cursor.fetchall()
-            print 'operation passed'
+            print('operation passed')
             return True
         except Error as e :
-            print ' operation failed {}'.format(error)
+            print(' operation failed {}'.format(error))
             if operation == 'SELECT':
                 return []
             return False
 
-db = DB('epic_db')
-print db.execute("""  SELECT * FROM Users""",'SELECT')
+####usage
+
+#first create a DB instance
+#db = DB('epic_db')
+# then send sql query and query type to execute and wait for [] response for selct type
+#print db.execute("""  SELECT * FROM Users""",'SELECT')
