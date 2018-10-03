@@ -1,9 +1,9 @@
 from functions import *
 
 
-user_type, time_stamp = login()
+user_type, time_stamp, username = login()
 if user_type == 'bootcamper':
-    show_scores()
+    show_scores(username)
     logout()
 elif user_type == 'lfa':
     while True:
