@@ -4,14 +4,16 @@ import sqlite3, datetime
 def login():
     username = input('Username: ')
     password = input('Password: ')
-    conn = sqlite3.connect('')
+    conn = sqlite3.connect('appdb')
     cursor = conn.cursor()
-    cursor.execute("SELECT username, role FROM users WHERE username='{}'".format(username))
+    cursor.execute(
+        "SELECT username, role FROM users WHERE username='{}' AND password={}".format(username, password)
+        )
     record = cursor.fetchone()
     if not record:
         print('User not registered!')
         exit()
-    return record[1], str(datetime.time())
+    return record[1], str(datetime.time()), record[0]
 
 
 def show_scores(username):
